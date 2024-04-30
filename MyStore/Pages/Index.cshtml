@@ -1,0 +1,303 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <img src="~/RELIANCE.NS_BIG.png" alt="Organization Logo" style="max-width: 250px; height: auto;">
+   
+</div>
+
+<style>
+    /* Initial styling */
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    section {
+        opacity: 0.3; /* Initial opacity for content */
+        transition: opacity 0.5s ease;
+    }
+
+        section:hover {
+            opacity: 1; /* Full opacity on hover */
+        }
+</style>
+<body>
+
+    <div>
+
+
+    <section class="topic" id="growth">
+        <h2>Growth is Life</h2>
+    </section>
+    <section class="content" id="growth-content">
+        <p>India's largest and most profitable private sector company.</p>
+    </section>
+
+    <section class="topic" id="vision">
+        <h2>Vision</h2>
+    </section>
+    <section class="content" id="vision-content">
+        <p>To be our clients' first call and preferred collaboration partner within our advisory expertise areas. To consistently exceed our clients' expectations for professional and value-adding advice. Our objective is long-standing and trustful client relationships created via excellent advice and service.</p>
+    </section>
+
+    <section class="topic" id="mission">
+        <h2>Mission</h2>
+    </section>
+    <section class="content" id="mission-content">
+        <p>To provide the best and most value-adding advice within our advisory expertise areas. To be an independent sparring-partner and to provide excellent advice for our clients within our advisory expertise areas. Reliance's activities shall be of benefit for both our clients - first and foremost - and for our collaboration partners and employees.</p>
+    </section>
+
+    <section class="topic" id="values">
+        <h2>Values</h2>
+    </section>
+    <section class="content" id="values-content">
+        <ul>
+            <li>
+                <i class="fas fa-gem"></i>
+                <h3>Quality</h3>
+                <p>We do not compromise - we have a passion for the best quality.</p>
+            </li>
+            <li>
+                <i class="fas fa-lightbulb"></i>
+                <h3>Innovation</h3>
+                <p>We are innovative and wish to enthuse our clients.</p>
+            </li>
+            <li>
+                <i class="fas fa-rocket"></i>
+                <h3>Ambition</h3>
+                <p>We set high objectives and push to achieve the best results.</p>
+            </li>
+            <li>
+                <i class="fas fa-balance-scale"></i>
+                <h3>Honesty</h3>
+                <p>We are honest towards our clients, also when it may be unpleasant to hear our true advice.</p>
+            </li>
+            <li>
+                <i class="fas fa-lock"></i>
+                <h3>Integrity</h3>
+                <p>We keep our word, guard confidentiality, and maintain a high level of integrity.</p>
+            </li>
+        </ul>
+    </section>
+
+    <script>
+        const topics = document.querySelectorAll('.topic');
+
+        topics.forEach(topic => {
+            topic.addEventListener('mouseenter', () => {
+                // Set opacity of all sections except the current topic
+                topics.forEach(otherTopic => {
+                    if (otherTopic !== topic) {
+                        otherTopic.style.opacity = '0.3'; // Fade out other topics
+                    }
+                });
+
+                // Show content of current topic
+                const content = document.querySelector(`#${topic.id}-content`);
+                if (content) {
+                    content.style.opacity = '1';
+                }
+            });
+
+            topic.addEventListener('mouseleave', () => {
+                // Reset opacity of all sections
+                topics.forEach(otherTopic => {
+                    otherTopic.style.opacity = '1'; // Reset opacity of other topics
+                    const content = document.querySelector(`#${otherTopic.id}-content`);
+                    if (content) {
+                        content.style.opacity = '0.3'; // Fade out content of other topics
+                    }
+                });
+            });
+        });
+    </script>
+    </div>
+    <div>
+    <div class="scroll-container">
+            <img src="~/ernest-mombrun-ttE4KSK48MU-unsplash.jpg" >
+            <img src="~/maeva-vigier-iNAW4xc_mlQ-unsplash.jpg" >
+            <img src="~/mukesh.jpg" >
+            <img src="~/petro.jpg" >
+            <img src="~/port.jpg">
+            <img src="~/reliance-industries-1st.jpeg" />
+            <img src="~/Reliance-retail-unlisted-share.jpeg" />
+            <img src="~/them-snapshots-kRjtCtQqJMM-unsplash.jpg" />
+            <img src="~/victor-2PJMDIgK9EA-unsplash.jpg" />
+            <img src="~/simon-kadula-8gr6bObQLOI-unsplash.jpg" />
+            
+    </div>
+    <style>
+        div.scroll-container {
+            background-color: #333;
+            overflow: auto;
+            white-space: nowrap;
+            padding: 10px;
+        }
+
+            div.scroll-container img {
+                padding: 10px;
+                    width: auto;
+                    height: 400px; 
+                    max-width: 100%; 
+                    max-height: 100%; 
+                    border: 2px solid black; 
+            }
+
+    </style>
+    </div>
+
+
+
+
+
+
+    <div>
+        <div class="chat-popup" id="chatPopup">
+            <div class="chat-header"> Chat-AI
+                <button onclick="toggleChatPopup()">Close</button>
+            </div>
+            <div class="chat-content" id="chatContent"></div>
+            <div class="chat-input">
+                <select id="questionSelect">
+                    <option value="">Select a question...</option>
+                    <option value="What is the current time?">What is the current time?</option>
+                    <option value="What day is it today?">What day is it today?</option>
+                    <option value="What is your name?">What is your name?</option>
+                    <option value="How are you feeling today?">How are you feeling today?</option>
+                    <option value="Where are RIL plants located in India?">Where are RIL plants located?</option>
+                    <option value="Who is the founder?">Who is the founder?</option>
+                    <option value="Which is the largest refinery of Reliance?">Which is the largest refinery of Reliance?</option>
+                    <option value="Who is CEO of Reliance?">Who is CEO of Reliance?</option>
+
+
+                </select>
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+
+        <img src="~/message-icon-512x463-tqzmxrt7.png" class="message-me-sign" onclick="toggleChatPopup()" alt="Message me">
+
+        <style>
+            /* Chat popup styling */
+            .chat-popup {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 300px;
+                background-color: #f9f9f9;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+                z-index: 9999;
+                display: none;
+            }
+
+                .chat-popup.open {
+                    display: block;
+                }
+
+            .chat-header {
+                padding: 10px;
+                border-bottom: 1px solid #ccc;
+                background-color: #f1f1f1;
+                text-align: right;
+            }
+
+            .chat-content {
+                padding: 10px;
+                max-height: 200px;
+                overflow-y: auto;
+            }
+
+            .chat-input {
+                padding: 10px;
+                border-top: 1px solid #ccc;
+                background-color: #fff;
+            }
+
+            /* Message me sign styling */
+            .message-me-sign {
+                position: fixed;
+                bottom: 10px;
+                right: 10px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+                text-align: center;
+                cursor: pointer;
+                z-index: 9999;
+            }
+        </style>
+
+        <script>
+            function toggleChatPopup() {
+                var chatPopup = document.getElementById("chatPopup");
+                chatPopup.classList.toggle("open");
+            }
+
+            function sendMessage() {
+                var selectedQuestion = document.getElementById("questionSelect").value;
+                var chatContent = document.getElementById("chatContent");
+
+                if (!selectedQuestion) {
+                    alert("Please select a question.");
+                    return;
+                }
+
+                // Append selected question to chat content
+                chatContent.innerHTML += "<div>User: " + selectedQuestion + "</div>";
+
+                // Respond based on selected question
+                var response = getResponse(selectedQuestion);
+                chatContent.innerHTML += "<div>Chat-ai: " + response + "</div>";
+
+                // Clear selected question
+                document.getElementById("questionSelect").selectedIndex = 0;
+
+                // Scroll chat content to bottom
+                chatContent.scrollTop = chatContent.scrollHeight;
+            }
+
+            function getResponse(selectedQuestion) {
+                // Define predefined questions and their corresponding answers
+                var predefinedQuestions = {
+                    "What is the current time?": "The current time is " + getCurrentTime() + " IST.",
+                    "What day is it today?": "Today is " + getCurrentDay() + ".",
+                    "What is your name?": "My name is Chat-AI.",
+                    "How are you feeling today?": "I'm feeling awesome!",
+                    "Where are RIL plants located in India?": "RIL plants are located in various places: Allahabad, Barabanki, Dahej, Hazira, Hoshiarpur, Jamnagar, Nagothane, Nagpur, Naroda, Patalganga, Silvassa and Vadodara.",
+                    "Who is the founder?": "The founder of RIL is Dhirubhai Ambani.",
+                    "Which is the largest refinery of Reliance?": "Jamnagar Refinery is the largest oil refinery in the world. ",
+                    "Who is CEO of Reliance?": "Mukesh D. Ambani"
+                };
+
+                // Check if selectedQuestion matches any predefined question
+                if (predefinedQuestions.hasOwnProperty(selectedQuestion)) {
+                    return predefinedQuestions[selectedQuestion];
+                } else {
+                    return "Sorry, I don't understand that question.";
+                }
+            }
+
+            function getCurrentTime() {
+                var currentDate = new Date();
+                var options = { timeZone: "Asia/Kolkata", hour12: true, hour: 'numeric', minute: 'numeric' };
+                return currentDate.toLocaleTimeString('en-US', options);
+            }
+
+            function getCurrentDay() {
+                var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                var currentDate = new Date();
+                var dayIndex = currentDate.getDay();
+                return days[dayIndex];
+            }
+        </script>
+    </div>
+</body>

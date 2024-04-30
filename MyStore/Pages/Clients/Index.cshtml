@@ -1,0 +1,53 @@
+﻿@page
+@model MyStore.Pages.Clients.IndexModel //c# code
+@{
+}
+<!--html code -->
+<br />
+<h2>Employee Details : </h2>
+<a class='btn btn-primary btn-sm' href='/Clients/Create'> Add New Employee</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Emp_ID</th>
+            <th>Emp_Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Gender</th>
+            <th>DOB</th>
+            <th>Dept_Name</th>
+            <th>Job_Title</th>
+            <th>Emergency_Contact</th>
+            <th>Date_of_Join</th>
+            <th>Created_At</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.listClients)
+        {
+            <tr>
+                <td>@item.Emp_ID</td>
+                <td>@item.Emp_Name</td>
+                <td>@item.Email</td>
+                <td>@item.Phone</td>
+                <td>@item.Address</td>
+                <td>@item.Gender</td>
+                <td>@item.DOB</td>
+                <td>@item.Dept_Name</td>
+                <td>@item.Job_Title</td>
+                <td>@item.Emergency_Contact</td>
+                <td>@item.Date_of_Join</td>
+                <td>@item.Created_At</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-primary btn-sm" href="/Clients/Edit?Emp_ID=@item.Emp_ID">Edit</a>
+                        <a class="btn btn-danger btn-sm" href="/Clients/Delete?Emp_ID=@item.Emp_ID">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
